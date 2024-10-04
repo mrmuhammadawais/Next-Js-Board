@@ -1,12 +1,15 @@
 import React from 'react';
 import { Card, Col, Row } from 'antd';
+
 import {
   EyeOutlined,
   DollarCircleOutlined,
   ShoppingCartOutlined,
   UsergroupAddOutlined,
 } from '@ant-design/icons';
-import { dashboardData } from '../data/dashboardData';
+import { dashboardData } from  '../data/dashboardData';
+import TopChannelsTable from '../data/channel'; 
+import ChatList from '../data/chatList'; 
 
 const iconMapping = {
   eye: <EyeOutlined />,
@@ -17,13 +20,17 @@ const iconMapping = {
 
 const DashboardCards = ({ data }) => {
   return (
+
+   
+
     <Row gutter={16}>
+   
       {data.map((card, index) => (
         <Col span={6} key={index}>
           <Card>
             <div style={{ display: 'flex', alignItems: 'center' }}>
               <div style={{ fontSize: '24px', color: card.color }}>
-                {iconMapping[card.icon]} {/* Use mapped icon */}
+                {iconMapping[card.icon]} 
               </div>
               <div style={{ marginLeft: '10px' }}>
                 <h3 style={{ margin: 0, fontSize: '25px',  fontWeight: 'bold'}}>{card.value}</h3>
@@ -39,4 +46,8 @@ const DashboardCards = ({ data }) => {
 };
 
 export default DashboardCards;
+
+
+
+
 

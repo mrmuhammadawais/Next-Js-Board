@@ -10,7 +10,7 @@ export const dashboardData = [
       title: 'Total Profit',
       value: '$45.2K',
       percentage: '4.35%',
-      icon: 'dollar', // Use a string for icon reference
+      icon: 'dollar', 
       color: '#52c41a',
     },
     {
