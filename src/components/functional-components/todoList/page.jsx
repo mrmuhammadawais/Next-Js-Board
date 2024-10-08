@@ -3,7 +3,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { Card, Checkbox, Button, Row, Col, Typography, Avatar, Select, Modal, Input, Form, Dropdown, Menu } from 'antd';
 import { PlusOutlined, EllipsisOutlined } from '@ant-design/icons';
-import { toggleTaskCompletion, addTask, deleteTask, editTask,updateTaskStatus} from '../../../redux/taskSlice' // Ensure all actions are imported
+import { toggleTaskCompletion, addTask, deleteTask, editTask,updateTaskStatus} from '../../../redux/taskSlice'  
 import { useState } from 'react';
 
 const { Title } = Typography;
@@ -135,14 +135,21 @@ const TaskList = () => {
   );
 
   return (
-    <div style={{ padding: '20px', backgroundColor: '#f0f2f5' }}>
-      <Title level={2} style={{ marginBottom: '20px', fontWeight: 'bold' }}>
+    <div style={{ padding: '20px', backgroundColor: '#f4f5f7' }}>
+      {/* Page Title */}
+      <Title level={3} style={{ marginBottom: '16px', fontWeight: 'bold', fontSize: '24px' }}>
         Tasks
       </Title>
 
+    
       <Row justify="space-between" align="middle" style={{ marginBottom: '20px' }}>
         <Col>
-          <Button type="primary" icon={<PlusOutlined />} style={{ borderRadius: '6px', backgroundColor: '#1890ff' }} onClick={showModal}>
+          <Button
+            type="primary"
+            icon={<PlusOutlined />}
+            style={{ borderRadius: '6px', backgroundColor: '#1890ff' }}
+            onClick={showModal}
+          >
             Add Task
           </Button>
         </Col>
@@ -152,31 +159,36 @@ const TaskList = () => {
             <Avatar src="https://randomuser.me/api/portraits/women/44.jpg" />
             <Avatar src="https://randomuser.me/api/portraits/men/56.jpg" />
             <Avatar src="https://randomuser.me/api/portraits/women/76.jpg" />
+            <Avatar icon={<PlusOutlined />} />
           </Avatar.Group>
         </Col>
       </Row>
 
+     
       <div style={{ marginBottom: '40px' }}>
-        <Title level={3} style={{ marginBottom: '12px', fontWeight: 'bold' }}>
+        <Title level={4} style={{ marginBottom: '12px', fontWeight: 'bold' }}>
           To Do's ({tasks.filter((task) => task.status === 'todo').length})
         </Title>
         {tasks.filter((task) => task.status === 'todo').map(renderTaskCard)}
       </div>
 
+      
       <div style={{ marginBottom: '40px' }}>
-        <Title level={3} style={{ marginBottom: '12px', fontWeight: 'bold' }}>
+        <Title level={4} style={{ marginBottom: '12px', fontWeight: 'bold' }}>
           In Progress ({tasks.filter((task) => task.status === 'inprogress').length})
         </Title>
         {tasks.filter((task) => task.status === 'inprogress').map(renderTaskCard)}
       </div>
 
+      
       <div style={{ marginBottom: '40px' }}>
-        <Title level={3} style={{ marginBottom: '12px', fontWeight: 'bold' }}>
+        <Title level={4} style={{ marginBottom: '12px', fontWeight: 'bold' }}>
           Completed ({tasks.filter((task) => task.status === 'completed').length})
         </Title>
         {tasks.filter((task) => task.status === 'completed').map(renderTaskCard)}
       </div>
 
+      
       <Modal
         title={isEditing ? "Edit Task" : "Add New Task"}
         visible={isModalVisible}
@@ -234,3 +246,4 @@ const TaskList = () => {
 };
 
 export default TaskList;
+

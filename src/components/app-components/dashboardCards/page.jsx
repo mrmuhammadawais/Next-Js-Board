@@ -1,53 +1,165 @@
-import React from 'react';
-import { Card, Col, Row } from 'antd';
+// import React from "react";
+// import { Card, Col, Row } from "antd";
+// import {
+//   EyeOutlined,
+//   DollarCircleOutlined,
+//   ShoppingCartOutlined,
+//   UsergroupAddOutlined,
+// } from "@ant-design/icons";
+// import { dashboardData } from "../data/dashboardData";
+// import TopChannelsTable from "../data/channel";
+// import ChatList from "../data/chatList";
+// import DashboardCharts from "../data/dashboardData"
+// const iconMapping = {
+//   eye: <EyeOutlined style={{ fontSize: "40px", color: "#1890ff" }} />,
+//   dollar: (
+//     <DollarCircleOutlined style={{ fontSize: "40px", color: "#1890ff" }} />
+//   ),
+//   shopping: (
+//     <ShoppingCartOutlined style={{ fontSize: "40px", color: "#1890ff" }} />
+//   ),
+//   user: <UsergroupAddOutlined style={{ fontSize: "40px", color: "#1890ff" }} />,
+// };
 
+// const DashboardCards = () => {
+//   return (
+//     <div style={{ padding: "20px" }}>
+//       <Row gutter={16}>
+//         {dashboardData.map((card, index) => (
+//           <Col span={6} key={index}>
+//             <Card style={{ textAlign: "center", borderRadius: "8px" }}>
+//               <div
+//                 style={{
+//                   display: "flex",
+//                   justifyContent: "center",
+//                   marginBottom: "10px",
+//                 }}
+//               >
+//                 {iconMapping[card.icon]}
+//               </div>
+//               <h3 style={{ margin: 0, fontSize: "25px", fontWeight: "bold" }}>
+//                 {card.value}
+//               </h3>
+//               <p style={{ margin: 0, color: "gray" }}>{card.title}</p>
+//               <p
+//                 style={{
+//                   margin: 0,
+//                   color: "green",
+//                   position: "absolute",
+//                   bottom: "10px",
+//                   right: "10px",
+//                 }}
+//               >
+//                 {card.percentage}
+//               </p>
+//             </Card>
+//           </Col>
+//         ))}
+//       </Row>
+//       <div style={{ padding: "20px",color:"#1C2434"}}>
+//         <Row gutter={24}>
+//           <Col xs={24} lg={16} >
+//             <Card title="Top Channels">
+//               <TopChannelsTable />
+//             </Card>
+//           </Col>
+
+        
+//           <Col xs={24} lg={8}>
+//             <Card title="Chats">
+//               <ChatList />
+//             </Card>
+//           </Col>
+//         </Row>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default DashboardCards;
+
+
+
+import React from "react";
+import { Card, Col, Row } from "antd";
 import {
   EyeOutlined,
   DollarCircleOutlined,
   ShoppingCartOutlined,
   UsergroupAddOutlined,
-} from '@ant-design/icons';
-import { dashboardData } from  '../data/dashboardData';
-import TopChannelsTable from '../data/channel'; 
-import ChatList from '../data/chatList'; 
+} from "@ant-design/icons";
+import { dashboardData } from "../data/dashboardData";
+import TopChannelsTable from "../data/channel";
+import ChatList from "../data/chatList";
+import DashboardCharts from "../data/charts";
 
 const iconMapping = {
-  eye: <EyeOutlined />,
-  dollar: <DollarCircleOutlined />,
-  shopping: <ShoppingCartOutlined />,
-  user: <UsergroupAddOutlined />,
+  eye: <EyeOutlined style={{ fontSize: "40px", color: "#1890ff" }} />,
+  dollar: (
+    <DollarCircleOutlined style={{ fontSize: "40px", color: "#1890ff" }} />
+  ),
+  shopping: (
+    <ShoppingCartOutlined style={{ fontSize: "40px", color: "#1890ff" }} />
+  ),
+  user: <UsergroupAddOutlined style={{ fontSize: "40px", color: "#1890ff" }} />,
 };
 
-const DashboardCards = ({ data }) => {
+const DashboardCards = () => {
   return (
-
-   
-
-    <Row gutter={16}>
-   
-      {data.map((card, index) => (
-        <Col span={6} key={index}>
-          <Card>
-            <div style={{ display: 'flex', alignItems: 'center' }}>
-              <div style={{ fontSize: '24px', color: card.color }}>
-                {iconMapping[card.icon]} 
+    <div style={{ padding: "20px" }}>
+      <Row gutter={16}>
+        {dashboardData.map((card, index) => (
+          <Col span={6} key={index}>
+            <Card style={{ textAlign: "center", borderRadius: "8px" }}>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  marginBottom: "10px",
+                }}
+              >
+                {iconMapping[card.icon]}
               </div>
-              <div style={{ marginLeft: '10px' }}>
-                <h3 style={{ margin: 0, fontSize: '25px',  fontWeight: 'bold'}}>{card.value}</h3>
-                <p style={{ margin: 0, color: 'gray' }}>{card.title}</p>
-                <p style={{ margin: 0, color:'rgb(16 185 129)' }}>{card.percentage}</p>
-              </div>
-            </div>
-          </Card>
-        </Col>
-      ))}
-    </Row>
+              <h3 style={{ margin: 0, fontSize: "25px", fontWeight: "bold" }}>
+                {card.value}
+              </h3>
+              <p style={{ margin: 0, color: "gray" }}>{card.title}</p>
+              <p
+                style={{
+                  margin: 0,
+                  color: "green",
+                  position: "absolute",
+                  bottom: "10px",
+                  right: "10px",
+                }}
+              >
+                {card.percentage}
+              </p>
+            </Card>
+          </Col>
+        ))}
+      </Row>
+      
+    
+
+    
+      <div style={{ padding: "20px", color: "#1C2434" }}>
+        <Row gutter={24}>
+          <Col xs={24} lg={16}>
+            <Card title="Top Channels">
+              <TopChannelsTable />
+            </Card>
+          </Col>
+
+          <Col xs={24} lg={8}>
+            <Card title="Chats">
+              <ChatList />
+            </Card>
+          </Col>
+        </Row>
+      </div>
+    </div>
   );
 };
 
 export default DashboardCards;
-
-
-
-
-

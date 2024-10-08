@@ -4,8 +4,8 @@ import profileReducer from './taskSlice'
 
 const store = configureStore({
   reducer: {
-    tasks: taskReducer,
     profile:profileReducer,
+    tasks: taskReducer,
   },
 });
 

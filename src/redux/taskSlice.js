@@ -1,22 +1,61 @@
-
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  tasks: [],
+  tasks: [
+    {
+      id: 1,
+      title: "Task Title",
+      description: "",
+      subtasks: [
+        { id: 1, text: "Here is task one", completed: false },
+        { id: 2, text: "Here is task Two", completed: true },
+        { id: 3, text: "Here is task Three", completed: false },
+      ],
+      status: "todo",
+    },
+    {
+      id: 2,
+      title: "Task Title",
+      description: "",
+      subtasks: [
+        { id: 1, text: "Here is task one", completed: false },
+        { id: 2, text: "Here is task Two", completed: false },
+      ],
+      status: "todo",
+    },
+    {
+      id: 3,
+      title: "Task Title",
+      description: "",
+      subtasks: [{ id: 1, text: "Here is task one", completed: false }],
+      status: "inprogress",
+    },
+    {
+      id: 4,
+      title: "Task Title",
+      description: "",
+      subtasks: [
+        { id: 1, text: "Here is task one", completed: true },
+        { id: 2, text: "Here is task Two", completed: true },
+      ],
+      status: "completed",
+    },
+  ],
   isModalOpen: false,
   newTask: {
-    title: '',
-    description: '',
+    title: "",
+    description: "",
   },
   profile: {
-    name: 'Muhammad Awais',
-    profession: 'Front End Developer',
-    imageUrl: '/path-to-initial-avatar.png', 
+    name: " ",
+    profession: " ",
+    imageUrl: "/path-to-initial-avatar.png",
+    coverPhoto: "/path-to-default-cover-photo.png", // Add default cover photo
   },
 };
 
 const taskSlice = createSlice({
-  name: 'tasks',
+  name: "tasks",
   initialState,
   reducers: {
     addTask(state, action) {
@@ -35,7 +74,12 @@ const taskSlice = createSlice({
       const { id, title, description, subtasks } = action.payload;
       const taskIndex = state.tasks.findIndex((task) => task.id === id);
       if (taskIndex !== -1) {
-        state.tasks[taskIndex] = { ...state.tasks[taskIndex], title, description, subtasks };
+        state.tasks[taskIndex] = {
+          ...state.tasks[taskIndex],
+          title,
+          description,
+          subtasks,
+        };
       }
     },
     updateTaskStatus(state, action) {
@@ -46,14 +90,18 @@ const taskSlice = createSlice({
       }
     },
 
-    updateProfileImage(state, action) {
-      state.profile.imageUrl = action.payload;
-    },
-    updateProfileName(state, action) {
+    updateProfileName: (state, action) => {
       state.profile.name = action.payload;
     },
-    updateProfileProfession(state, action) {
+    updateProfileProfession: (state, action) => {
       state.profile.profession = action.payload;
+    },
+    updateProfileImage: (state, action) => {
+      state.profile.imageUrl = action.payload; // Store image URL in Redux
+    },
+    updateCoverPhoto: (state, action) => {
+      // New action to update cover photo
+      state.profile.coverPhoto = action.payload; // Store cover photo URL in Redux
     },
   },
 });
@@ -64,19 +112,10 @@ export const {
   deleteTask,
   editTask,
   updateTaskStatus,
-  updateProfileImage,
   updateProfileName,
   updateProfileProfession,
+  updateProfileImage,
+  updateCoverPhoto, // Export the new action
 } = taskSlice.actions;
 
 export default taskSlice.reducer;
-
-
-
-
-
-
-
-
-
-
