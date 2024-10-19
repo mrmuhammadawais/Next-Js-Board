@@ -28,7 +28,7 @@ const SignInForm = () => {
   return (
     <div className="w-full max-w-md mx-auto p-10 mt-[110px] bg-white shadow-lg rounded-lg">
       <Title level={2} className="text-center text-gray-800">
-      Dashboard Management
+     TailAdmin
       </Title>
 
       <Form

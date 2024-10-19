@@ -2,8 +2,10 @@
 import localFont from 'next/font/local'
 import "./globals.css";
 import { Providers } from '../redux/providers'
+
 // import { Provider } from 'react-redux'
 import store from '../redux/store'
+// import { AntdRegistry } from '@ant-design/nextjs-registry';
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -24,11 +26,14 @@ export default function RootLayout({children}) {
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`} >
+        {/* <AntdRegistry> */}
       <Providers>
         {children}
       </Providers>
+      {/* </AntdRegistry> */}
       </body>
     </html>
   );
 }
+
 

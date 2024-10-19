@@ -5,4 +5,7 @@
   .custom-menu-item:hover {
     background-color: rgba(255, 255, 255, 0.1) !important; /* Add a subtle hover effect */
   }
-  
+  .bg-meta-2 {
+    --tw-bg-opacity: 1;
+    background-color: rgb(239 242 247 )
+  }

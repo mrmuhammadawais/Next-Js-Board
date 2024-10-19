@@ -1,167 +1,144 @@
 
+import React from 'react';
+import { List, Avatar, Badge } from 'antd';
+import { useSelector } from 'react-redux';
 
-// import React from "react";
-// import { List, Avatar, Badge } from "antd";
-
-// const ChatData = [
-//   {
-//     name: "Devid Heilo",
-//     message: "How are you?",
-//     time: "12 min",
-//     avatar: "https://randomuser.me/api/portraits/men/1.jpg",
-//     unreadCount: 3,
-//     status: "green",
-//   },
-//   {
-//     name: "Henry Fisher",
-//     message: "Waiting for you!",
-//     time: "12 min",
-//     avatar: "https://randomuser.me/api/portraits/women/2.jpg",
-//     unreadCount: 1,
-//     status: "red",
-//   },
-//   {
-//     name: "Jhon Doe",
-//     message: "What's up?",
-//     time: "32 min",
-//     avatar: "https://randomuser.me/api/portraits/men/3.jpg",
-//     unreadCount: 2,
-//     status: "green",
-//   },
-//   {
-//     name: "Jhon Doe",
-//     message: "What's up?",
-//     time: "12 min",
-//     avatar: "https://randomuser.me/api/portraits/men/4.jpg",
-//     unreadCount: 4,
-//     status: "green",
-//   },
-// ];
-
-// const ChatList = () => {
-//   return (
-//     <List
-//       itemLayout="horizontal"
-//       dataSource={ChatData}
-//       className="w-full max-w-full"
-//       renderItem={(item) => (
-//         <List.Item className="flex justify-between items-center w-full p-2 sm:p-4">
-//           <List.Item.Meta
-//             avatar={
-//               <Badge dot status={item.status}>
-//                 <Avatar src={item.avatar} className="w-10 h-10" />
-//               </Badge>
-//             }
-//             title={
-//               <span className="text-base font-semibold">{item.name}</span>
-//             }
-//             description={
-//               <div className="flex items-center justify-between w-full">
-//                 <span>{item.message}</span>
-//                 <span className="text-gray-500 ml-2 text-sm">{item.time}</span>
-//               </div>
-//             }
-//             className="w-full"
-//           />
-//           <Badge count={item.unreadCount} className="ml-4" />
-//         </List.Item>
-//       )}
-//     />
-//   );
-// };
-
-// export default ChatList;
-
-
-
-
-import React from "react";
-import { List, Avatar, Badge } from "antd";
-import { useSelector } from "react-redux";
-
-const ChatData = [
+const chatData = [
   {
-    name: "Devid Heilo",
-    message: "How are you?",
-    time: "12 min",
-    avatar: "https://randomuser.me/api/portraits/men/1.jpg",
-    unreadCount: 3,
-    status: "green",
+    name: 'Devid Heilo',
+    message: 'How are you?',
+    time: '12 min',
+    avatarUrl: 'https://randomuser.me/api/portraits/men/3.jpg',
+    status: 'online',
+    unread: 3,
   },
   {
-    name: "Henry Fisher",
-    message: "Waiting for you!",
-    time: "12 min",
-    avatar: "https://randomuser.me/api/portraits/women/2.jpg",
-    unreadCount: 1,
-    status: "red",
+    name: 'Henry Fisher',
+    message: 'Waiting for you!',
+    time: '12 min',
+    avatarUrl: 'https://randomuser.me/api/portraits/women/2.jpg',
+    status: 'offline',
+    unread: 0,
   },
   {
-    name: "Jhon Doe",
+    name: 'Jhon Doe',
     message: "What's up?",
-    time: "32 min",
-    avatar: "https://randomuser.me/api/portraits/men/3.jpg",
-    unreadCount: 2,
-    status: "green",
+    time: '32 min',
+    avatarUrl: 'https://randomuser.me/api/portraits/men/4.jpg',
+    status: 'online',
+    unread: 2,
   },
   {
-    name: "Jhon Doe",
-    message: "What's up?",
-    time: "12 min",
-    avatar: "https://randomuser.me/api/portraits/men/4.jpg",
-    unreadCount: 4,
-    status: "green",
+    name: 'Jane Doe',
+    message: 'Great',
+    time: '32 min',
+    avatarUrl: 'https://randomuser.me/api/portraits/women/4.jpg',
+    status: 'away',
+    unread: 0,
   },
   {
-    name: "Jhon Doe",
-    message: "What's up?",
-    time: "12 min",
-    avatar: "https://randomuser.me/api/portraits/men/4.jpg",
-    unreadCount: 4,
-    status: "green",
+    name: 'Jhon Doe',
+    message: 'How are you?',
+    time: '32 min',
+    avatarUrl: 'https://randomuser.me/api/portraits/men/5.jpg',
+    status: 'online',
+    unread: 3,
   },
 ];
 
 const ChatList = () => {
-  // Get dark mode from Redux store
   const darkMode = useSelector((state) => state.tasks.darkMode);
 
   return (
-    <List
-      itemLayout="horizontal"
-      dataSource={ChatData}
-      className="w-full max-w-full"
-      renderItem={(item) => (
-        <List.Item
-          className={`flex justify-between items-center w-full p-2 sm:p-4 ${
-            darkMode ? 'bg-[#24303f]' : 'bg-white'
-          }`}
-        >
-          <List.Item.Meta
-            avatar={
-              <Badge dot status={item.status} style={{ backgroundColor: item.status === 'green' ? 'green' : 'red' }}>
-                <Avatar src={item.avatar} className="w-10 h-10" />
-              </Badge>
-            }
-            title={
-              <span className={`text-base font-semibold ${darkMode ? 'text-white' : 'text-black'}`}>
-                {item.name}
-              </span>
-            }
-            description={
-              <div className="flex items-center justify-between w-full">
-                <span className={darkMode ? 'text-white' : 'text-black'}>{item.message}</span>
-                <span className={`text-gray-500 ml-2 text-sm ${darkMode ? 'text-white' : 'text-gray-500'}`}>
-                  {item.time}
-                </span>
-              </div>
-            }
-            className="w-full"
-          />
-          <Badge count={item.unreadCount} className={`ml-4 ${darkMode ? 'bg-blue-600' : 'bg-blue-400'}`} />
-        </List.Item>
-      )}
-    />
+    <div className="w-full max-w-md mx-auto mt-[37px] mb-[55px] cursor-pointer">
+      <h4
+        className={`mb-4 px-7.5 text-xl font-semibold mt-[-21px] ${
+          darkMode ? 'text-white' : 'text-black'
+        }`}
+      >
+        Chats
+      </h4>
+
+      <List
+        itemLayout="horizontal"
+        dataSource={chatData}
+        renderItem={(item) => (
+          <List.Item className="py-2">
+            <List.Item.Meta
+              avatar={
+                <div className="relative flex items-center">
+                  <Avatar size={48} src={item.avatarUrl} />
+                  {item.status && (
+                    <span
+                      className={`absolute w-3 h-3 rounded-full ${
+                        item.status === 'online'
+                          ? 'bg-green-500'
+                          : item.status === 'away'
+                          ? 'bg-[#dc3545]'
+                          : 'bg-red-500'
+                      }`}
+                      style={{
+                        left: '38px',
+                        bottom: '4px',
+                      }}
+                    />
+                  )}
+                </div>
+              }
+              title={
+                <div className="flex justify-between items-center">
+                  <span
+                    className={`${
+                      darkMode ? 'text-white' : '#323a48'
+                    } font-medium`}
+                    style={{ fontSize: '14px' }}
+                  >
+                    {item.name}
+                  </span>
+                </div>
+              }
+              description={
+                <div className="flex justify-between items-center">
+                  <div className="flex flex-row">
+                    <span
+                      className={`text-sm text-black dark:text-white ${
+                        darkMode ? 'text-white' : 'text-gray-500'
+                      }`}
+                      style={{ fontSize: '12px'  }}
+                    >
+                      {item.message}
+                    </span>
+                    <span
+                      className="text-sm text-gray-400"
+                      style={{
+                        fontSize: '12px',
+                        color: darkMode ? '#b5b5b5' : '#878ea6',
+                        marginTop: '0px',
+                        marginLeft:'4px'
+                      }}
+                    >
+                      {item.time}
+                    </span>
+                  </div>
+
+                  {item.unread > 0 && (
+                    <Badge
+                      count={item.unread}
+                      style={{
+                        backgroundColor: '#3c50e0',
+                        color: '#fff',
+                        marginLeft: '10px',
+                        fontSize: '12px',
+                      }}
+                    />
+                  )}
+                </div>
+              }
+            />
+          </List.Item>
+        )}
+      />
+    </div>
   );
 };
 
